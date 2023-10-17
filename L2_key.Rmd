@@ -1,0 +1,399 @@
+---
+title: "第2课 R 数据类型与数据结构 习题答案"
+subtitle: "顶刊研习社"
+author: "Li Zongzhang"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    toc: yes
+    number_sections: no
+    df_print: paged
+editor_options:
+  markdown:
+    wrap: 72
+
+
+---
+
+
+```{css, echo=FALSE}
+/* 将目录放在右侧 */
+#TOC {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30%;
+  overflow-y: scroll;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+/* 使文本内容不覆盖目录 */
+body {
+  margin-right: 1%;
+}
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE,
+	comment = ""
+)
+```
+
+
+
+# 习题1 
+
+```{r}
+# Salaries在包carData中
+# install.packages("carData") 
+library(carData)
+data(Salaries)
+
+library(tidyverse)
+```
+
+1.1 查看数据框carData::Salaries，数据框Salaries的每一列属于哪种数据类型？
+
+rank: factor 因子型
+
+discipline: factor 因子型
+
+yrs.since.phd: integer 整数型
+
+yrs.service: integer 整数型
+
+sex: 因子型
+
+salary: integer 整数型
+
+
+
+```{r}
+str(Salaries)
+```
+
+1.2 数据框Salaries中的rank，这个因子有几个水平？因子水平的顺序是什么？
+
+三个水平，顺序是：Assistant < Associate < Full
+
+```{r}
+levels(Salaries$rank)
+
+```
+
+1.3 报告数据框Salaries的rank和discipline的列联表,列联表中呈现频数。
+
+```{r}
+table(Salaries$rank, Salaries$discipline)
+```
+
+1.4 报告数据框Salaries的rank和discipline的列联表,列联表中呈现频率。
+
+```{r}
+table(Salaries$rank, Salaries$discipline) %>% 
+  prop.table() %>% 
+  round(3)
+```
+
+1.5 绘制数据框Salaries的salary的直方图。
+```{r}
+hist(Salaries$salary, 
+     breaks = seq(40000, 240000, 20000),
+     col = "cyan",
+     main = "Histogram of Salary",
+     xlab = "Salary",
+     ylab = "Frequency",
+     xlim = c(40000, 240000),
+     ylim = c(0,120),
+     xaxt = "n")
+
+axis(1, at = seq(40000, 240000, 40000))
+
+# 获取直方图的数据
+hist_data <- hist(Salaries$salary, 
+     breaks = seq(0, 300000, 20000),
+                  plot = FALSE)
+
+# 在直方图上标注频数
+text(x = hist_data$mids, y = hist_data$counts, 
+     labels = hist_data$counts, pos = 3, col = 1)
+
+
+```
+
+1.6 绘制数据框Salaries的salary的箱线图。
+```{r}
+boxplot(Salaries$salary, 
+        col = "cyan",
+        main = "Boxplot of Salary",
+        xlab = "Salary",
+        horizontal = TRUE,
+        xaxt = "n")
+
+axis(1, at = seq(40000, 240000, 20000))
+```
+
+1.7 将数据框Salaries个案按照rank分组，绘制salary的分组箱线图。
+
+```{r}
+boxplot(Salaries$salary ~ Salaries$rank, 
+        col = "cyan",
+        main = "Boxplot of Salary",
+        xlab = "Salary",
+        horizontal = TRUE,
+        xaxt = "n")
+
+axis(1, at = seq(40000, 240000, 20000))
+```
+
+
+1.8 绘制数据框Salaries的rank的条形图。
+
+```{r}
+counts <- table(Salaries$rank)
+
+barplot(counts,
+        col = "cyan",
+        main = "Distribution of Rank",
+        xlab = "Rank",
+        ylab = "Frequency",
+        las = 1,
+        ylim = c(0,300))
+
+# 在每个条形上标注频数
+text(x = barplot(counts, plot = FALSE), 
+     y = counts + 0.1,            
+     labels = counts, 
+     pos = 3,      
+     col = "black") 
+
+
+```
+1.9 绘制数据框Salaries的discipline的饼图。
+
+```{r}
+counts <- table(Salaries$discipline)
+
+pct <- round(counts/sum(counts)*100)
+
+
+pie(counts,
+    col = c("cyan", "pink"),
+    main = "Distribution of Discipline",
+    labels = paste(c("A", "B"), pct, "%"),
+    clockwise = TRUE,
+    radius = 1,
+    cex = 1.5,
+    init.angle = 90,
+    border = NA)
+```
+
+1.10 绘制数据框Salaries的yrs.sevice和salary的散点图, 设置散点颜色和形状。
+
+```{r}
+plot(Salaries$yrs.service, Salaries$salary,
+     col = "cyan", 
+     pch = 4, 
+     main = "Scatter Plot of Salary vs. Years of Service",
+     xlab = "Years of Service",
+     ylab = "Salary")
+
+```
+
+
+1.11 绘制数据框Salaries的yrs.since.phd和salary的散点图, 设置散点颜色和形状。
+```{r}
+plot(Salaries$yrs.since.phd, Salaries$salary,
+     col = "purple", 
+     pch = 4, 
+     main = "Scatter Plot of Salary vs. Years sincephd",
+     xlab = "Years since phd",
+     ylab = "Salary")
+```
+
+1.12 利用cut()函数将数据框Salaries的salary转换成因子。
+```{r}
+Salaries$salary_cat <- cut(Salaries$salary, 
+                           breaks = c(50000, 100000, 150000, 200000, 250000))
+
+table(Salaries$salary_cat)
+
+```
+
+
+1.13 查看数据框Salaries的前六行、后六行。
+```{r}
+head(Salaries)
+
+tail(Salaries)
+```
+
+
+1.13 查看数据框Salaries的salary的第1个值、第2个值、第3个值。
+```{r}
+Salaries$salary[1:3]
+```
+
+1.14 查看数据框Salaries的第1至3行, 第1至3列。
+```{r}
+Salaries[1:3, 1:3]
+```
+
+
+1.15 报告数据框Salaries的salary的五数概括(最小值、第1个四分位数、中位数、第3个四分位数和最大值)。
+```{r}
+fivenum(Salaries$salary)
+```
+
+1.16 报告数据框Salaries的salary的描述性统计量(均值、中位数、标准差、偏度、峰度等)。
+```{r}
+psych::describe(Salaries$salary) %>% 
+  select(mean, median, sd, skew, kurtosis)
+
+```
+
+
+# 习题2
+
+**绘制下列向量的直方图,为直方图填充你喜爱的颜色。**
+
+2.1 生成一个服从均匀分布的向量，该向量包含1000个值。
+```{r}
+set.seed(123) #设置随机数种子，保证每次运行代码生成的随机数相同
+x <- runif(1000)
+hist(x, breaks = 20,col = 5,
+     main = "Histogram of U(0,1)",
+     ylim = c(0,80),
+     yaxt = "n"
+     )
+
+
+# 设置 Y 轴刻度
+axis(side = 2, las = 1,at = seq(0, 80, 20), 
+     labels = seq(0, 80, 20),font = 0.5)
+```
+
+
+2.2 生成一个服从标准正态分布的向量，该向量包含1000个值。
+```{r}
+set.seed(123)
+x <- rnorm(1000)
+hist(x, main = "Histogram of N(0,1)", col = 5,
+     ylim = c(0,240),
+     xlim = c(-4,4),
+     yaxt = "n")
+
+# 设置 Y 轴刻度
+axis(side = 2,las = 1, at = seq(0, 240, 20), 
+     labels = seq(0, 240, 20),font = 0.5)
+```
+
+
+2.3 生成一个服从均值为80，标准差为5的正态分布的向量，该向量包含1000个值。
+```{r}
+set.seed(123)
+x <- rnorm(1000, 80, 5)
+hist(x, main = "Histogram of N(80,5)", col = 5,
+     ylim = c(0,240),
+     xlim = c(60,100),
+     yaxt = "n")
+
+# 设置 Y 轴刻度
+axis(side = 2,las = 1, at = seq(0, 240, 40), 
+     labels = seq(0, 240, 40),font = 0.5)
+```
+
+
+2.4 生成一个服从自由度为5的卡方分布的向量，该向量包含1000个值。
+```{r}
+set.seed(123)
+x <- rchisq(1000, 5)
+hist(x, col = 5, breaks = 20,
+     main = expression(paste("Histogram of ",chi^2, "(5)")), 
+     ylim = c(0,200),
+     xlim = c(0,20),
+     yaxt = "n")
+
+# 设置 Y 轴刻度
+axis(side = 2, las = 1,at = seq(0, 200,20), 
+     labels = seq(0, 200, 20),font = 0.5)
+```
+
+2.5 生成一个服从自由度为5的t分布的向量，该向量包含1000个值。
+```{r}
+set.seed(123)
+x <- rt(1000, 5)
+hist(x, main = "Histogram of t(5)", col = 5,
+     ylim = c(0,200),
+     xlim = c(-6,6),
+     breaks = 20,
+     yaxt = "n")
+
+# 设置 Y 轴刻度
+axis(side = 2, las = 1,at = seq(0, 200, 40), 
+     labels = seq(0, 200, 40),font = 0.5)
+```
+
+
+2.6 生成一个服从F(5,10)分布的向量，该向量包含1000个值。
+```{r}
+set.seed(123)
+x <- rf(1000, 5,10)
+hist(x,breaks = 50,col = 5,
+     main = "Histogram of F(5,10)", 
+     ylim = c(0,350),
+     xlim = c(0,17),
+     yaxt = "n")
+
+# 设置 X 轴刻度
+axis(side = 1,las = 1, at = seq(0, 17, 1), 
+     labels = seq(0, 17, 1),font = 0.5)
+
+# 设置 Y轴刻度
+axis(side = 2,las = 1, at = seq(0, 350, by = 50), 
+     labels = seq(0, 350, by = 50),font = 0.5)
+```
+
+
+# 习题3
+
+```{r}
+data(airquality)
+```
+
+3.1 利用循环语句绘制数据框airquality中的Ozone、Solar.R、Wind、Temp的箱线图。
+
+```{r}
+par(mfrow = c(2,2))
+
+for (i in 1:4) {
+  boxplot(airquality[,i], 
+          main = names(airquality)[i],
+          col = i,
+          horizontal = TRUE)
+}
+```
+
+
+3.2 利用循环语句绘制数据框airquality中的Ozone、Solar.R、Wind、Temp的直方图。
+
+```{r}
+par(mfrow = c(2,2))
+
+for (i in 1:4) {
+  hist(airquality[,i], 
+      main = names(airquality)[i],
+      col = i,
+      ylim = c(0,40))
+  }
+```
+
+
