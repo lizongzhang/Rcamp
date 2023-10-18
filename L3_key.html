@@ -14,7 +14,7 @@
 
 <meta name="date" content="2023-10-18" />
 
-<title>AI助力医学统计与R语言入门训练营（第1-12课）</title>
+<title>第3课tidyverse 习题答案</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -31,6 +31,97 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+
+a.sourceLine {
+pointer-events: auto;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -57,7 +148,7 @@ code span.ot { color: #007020; }
 
 
 <section class="page-header">
-<h1 class="title toc-ignore project-name">AI助力医学统计与R语言入门训练营（第1-12课）</h1>
+<h1 class="title toc-ignore project-name">第3课tidyverse 习题答案</h1>
 <h3 class="subtitle project-tagline">顶刊研习社</h3>
 <h4 class="author project-author">Li Zongzhang</h4>
 <h4 class="date project-date">2023-10-18</h4>
@@ -67,28 +158,35 @@ code span.ot { color: #007020; }
 <div id="TOC" class="toc">
 <div class="toc-box">
 <ul>
-<li><a href="#日程" id="toc-日程">日程</a></li>
-<li><a href="#第0课-r和r-studio的下载和安装" id="toc-第0课-r和r-studio的下载和安装">第0课 R和R
-Studio的下载和安装</a></li>
-<li><a href="#第1课-r-studio入门" id="toc-第1课-r-studio入门">第1课 R
-Studio入门</a></li>
-<li><a href="#第2课-数据类型和数据结构" id="toc-第2课-数据类型和数据结构">第2课 数据类型和数据结构</a></li>
-<li><a href="#第3课-tidyverse" id="toc-第3课-tidyverse">第3课
-tidyverse</a></li>
-<li><a href="#第4课-ggplot2" id="toc-第4课-ggplot2">第4课
-ggplot2</a></li>
-<li><a href="#第5课-ai助力学习r之一" id="toc-第5课-ai助力学习r之一">第5课 AI助力学习R之一</a></li>
-<li><a href="#第6课-ai助力学习r之二" id="toc-第6课-ai助力学习r之二">第6课 AI助力学习R之二</a></li>
-<li><a href="#第7课-统计量和检验结果的表格化" id="toc-第7课-统计量和检验结果的表格化">第7课
-统计量和检验结果的表格化</a></li>
-<li><a href="#第8课-组间差异比较" id="toc-第8课-组间差异比较">第8课
-组间差异比较</a></li>
-<li><a href="#第9课-回归分析线性回归logistic回归" id="toc-第9课-回归分析线性回归logistic回归">第9课
-回归分析——线性回归/logistic回归</a></li>
-<li><a href="#第10课-回归分析poisson回归cox回归" id="toc-第10课-回归分析poisson回归cox回归">第10课
-回归分析——poisson回归/Cox回归</a></li>
-<li><a href="#第11课-回归分析中控制混杂" id="toc-第11课-回归分析中控制混杂">第11课 回归分析中控制混杂</a></li>
-<li><a href="#第12课-限制性立方样条rcs" id="toc-第12课-限制性立方样条rcs">第12课 限制性立方样条RCS</a></li>
+<li><a href="#习题1" id="toc-习题1">习题1</a>
+<ul>
+<li><a href="#section" id="toc-section">1.1</a></li>
+<li><a href="#section-1" id="toc-section-1">1.2</a></li>
+<li><a href="#section-2" id="toc-section-2">1.3</a></li>
+<li><a href="#section-3" id="toc-section-3">1.4</a></li>
+</ul></li>
+<li><a href="#习题2" id="toc-习题2">习题2</a>
+<ul>
+<li><a href="#section-4" id="toc-section-4">2.1</a></li>
+<li><a href="#section-5" id="toc-section-5">2.2</a></li>
+<li><a href="#section-6" id="toc-section-6">2.3</a></li>
+<li><a href="#section-7" id="toc-section-7">2.4</a></li>
+<li><a href="#section-8" id="toc-section-8">2.5</a></li>
+<li><a href="#section-9" id="toc-section-9">2.6</a></li>
+<li><a href="#section-10" id="toc-section-10">2.7</a></li>
+<li><a href="#section-11" id="toc-section-11">2.8</a></li>
+<li><a href="#section-12" id="toc-section-12">2.9</a></li>
+<li><a href="#section-13" id="toc-section-13">2.10</a></li>
+</ul></li>
+<li><a href="#习题3" id="toc-习题3">习题3</a>
+<ul>
+<li><a href="#section-14" id="toc-section-14">3.1</a></li>
+<li><a href="#section-15" id="toc-section-15">3.2</a></li>
+<li><a href="#section-16" id="toc-section-16">3.3</a></li>
+<li><a href="#section-17" id="toc-section-17">3.4</a></li>
+<li><a href="#section-18" id="toc-section-18">3.5</a></li>
+<li><a href="#section-19" id="toc-section-19">3.6</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -111,204 +209,555 @@ body {
 margin-right: 1%;
 }
 </style>
-<div id="日程" class="section level1">
-<h1>日程</h1>
-<ul>
-<li><a href="https://lizongzhang.github.io/rcamp/agenda.html">第1-12课</a></li>
-</ul>
+<div id="习题1" class="section level1">
+<h1>习题1</h1>
+<p>数据集：mpg {ggplot2}</p>
+<div id="section" class="section level3">
+<h3>1.1</h3>
+<p>1.1 用select()函数从mpg提取5个变量⽣成新的数据框。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">data</span>(mpg)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer<span class="sc">:</span>cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">head</span>() <span class="co">#查看前6行</span></span></code></pre></div>
+<pre><code># A tibble: 6 × 5
+  manufacturer model displ  year   cyl
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+1 audi         a4      1.8  1999     4
+2 audi         a4      1.8  1999     4
+3 audi         a4      2    2008     4
+4 audi         a4      2    2008     4
+5 audi         a4      2.8  1999     6
+6 audi         a4      2.8  1999     6</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">select</span>(year,cyl,drv<span class="sc">:</span>hwy) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code># A tibble: 6 × 5
+   year   cyl drv     cty   hwy
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1  1999     4 f        18    29
+2  1999     4 f        21    29
+3  2008     4 f        20    31
+4  2008     4 f        21    30
+5  1999     6 f        16    26
+6  1999     6 f        18    26</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code># A tibble: 6 × 5
+  manufacturer model displ  year   cyl
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+1 audi         a4      1.8  1999     4
+2 audi         a4      1.8  1999     4
+3 audi         a4      2    2008     4
+4 audi         a4      2    2008     4
+5 audi         a4      2.8  1999     6
+6 audi         a4      2.8  1999     6</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code># A tibble: 6 × 5
+   year   cyl drv     cty   hwy
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+1  1999     4 f        18    29
+2  1999     4 f        21    29
+3  2008     4 f        20    31
+4  2008     4 f        21    30
+5  1999     6 f        16    26
+6  1999     6 f        18    26</code></pre>
 </div>
-<div id="第0课-r和r-studio的下载和安装" class="section level1">
-<h1>第0课 R和R Studio的下载和安装</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L0_slide.html">Chap
-0 讲义</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>下载R安装文件 <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p></li>
-<li><p>下载R Studio安装文件 <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p></li>
-<li><p>R Studio cloud <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a></p>
-<ul>
-<li>R
-Studio网页版，用google账号或者github账号注册，国内邮箱可能无法注册。</li>
-</ul></li>
-</ul></li>
-</ul>
+<div id="section-1" class="section level3">
+<h3>1.2</h3>
+<p>1.2 用mutate()函数在数据框中追加新的变量，将油耗变量cty和hwy（miles
+per gallon）转换成转公里/升(kilometers per liter)的油耗指标。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># 1 miles per gallon = 0.425 kilometers per liter</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#将追加的变量和原数据框mpg保存到新的数据框mpgnew</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>mpgnew <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cty.kpl =</span> <span class="fl">0.425</span><span class="sc">*</span>cty, </span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>               <span class="at">hwy.kpl =</span> <span class="fl">0.425</span><span class="sc">*</span>hwy)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="fu">head</span>(mpgnew)</span></code></pre></div>
+<pre><code># A tibble: 6 × 13
+  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
+# ℹ 2 more variables: cty.kpl &lt;dbl&gt;, hwy.kpl &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co">#在数据框mpg上追加变量</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>mpg<span class="sc">$</span>hwy.kpl <span class="ot">&lt;-</span> <span class="fl">0.425</span><span class="sc">*</span>mpg<span class="sc">$</span>hwy</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>mpg<span class="sc">$</span>cty.kpl <span class="ot">&lt;-</span> <span class="fl">0.425</span><span class="sc">*</span>mpg<span class="sc">$</span>cty</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<pre><code># A tibble: 6 × 13
+  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
+# ℹ 2 more variables: hwy.kpl &lt;dbl&gt;, cty.kpl &lt;dbl&gt;</code></pre>
 </div>
-<div id="第1课-r-studio入门" class="section level1">
-<h1>第1课 R Studio入门</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_slide.html">Chap
-1 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_script.html">Chap
-1 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_ex.html">Chap 1
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_key.html">chap 1
-答案</a></p></li>
-<li><p><a href="https://pan.baidu.com/s/13Kv8qLdUs-J0l8FRK5qCvg?pwd=1234%3E">数据文件下载</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>按任务浏览R包 CRAN Task Views <a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a></p></li>
-<li><p>R包下载排行榜 <a href="https://www.r-pkg.org/" class="uri">https://www.r-pkg.org/</a></p></li>
-<li><p>Getting Help Online: <a href="https://rseek.org/" class="uri">https://rseek.org/</a></p></li>
-</ul></li>
-</ul>
+<div id="section-2" class="section level3">
+<h3>1.3</h3>
+<p>1.3
+任选mpg中的某个变量，用if_else()函数对该变量的数值进⾏条件转换。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co">#substring(trans, 1,4) </span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co">#二值转换 if_else</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>mpgnew <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">transmission =</span> </span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>           <span class="fu">if_else</span>(<span class="fu">substring</span>(trans, <span class="dv">1</span>,<span class="dv">4</span>) <span class="sc">==</span> <span class="st">&quot;auto&quot;</span>, </span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>                   <span class="st">&quot;auto&quot;</span>,<span class="st">&quot;manual&quot;</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#多值转换 case_when</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>mpg<span class="sc">$</span>drive <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  mpg<span class="sc">$</span>drv <span class="sc">==</span> <span class="st">&quot;f&quot;</span> <span class="sc">~</span> <span class="st">&quot;front-wheel&quot;</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>  mpg<span class="sc">$</span>drv <span class="sc">==</span> <span class="st">&quot;r&quot;</span> <span class="sc">~</span> <span class="st">&quot;rear-wheel&quot;</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>  mpg<span class="sc">$</span>drv <span class="sc">==</span> <span class="st">&quot;4&quot;</span> <span class="sc">~</span> <span class="st">&quot;four-wheel&quot;</span>)</span></code></pre></div>
 </div>
-<div id="第2课-数据类型和数据结构" class="section level1">
-<h1>第2课 数据类型和数据结构</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_slide.html">Chap
-2 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_script.html">Chap
-2 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_ex.html">Chap 2
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_key.html">chap 2
-答案</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>HTML COLOR CODES <a href="https://htmlcolorcodes.com" class="uri">https://htmlcolorcodes.com</a></p></li>
-<li><p>Colors in R <a href="https://r-charts.com/colors/" class="uri">https://r-charts.com/colors/</a></p></li>
-</ul></li>
-</ul>
+<div id="section-3" class="section level3">
+<h3>1.4</h3>
+<p>1.4 设置三个筛选条件，用filter()函数从mpg筛选个案⽣成新的数据框。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># &amp; 代表条件组合</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&quot;suv&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>           cyl <span class="sc">==</span> <span class="dv">8</span> <span class="sc">&amp;</span> </span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>          year <span class="sc">==</span> <span class="dv">2008</span>) </span></code></pre></div>
+<pre><code># A tibble: 23 × 14
+   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
+   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+ 1 chevrolet    c1500 sub…   5.3  2008     8 auto… r        14    20 r     suv  
+ 2 chevrolet    c1500 sub…   5.3  2008     8 auto… r        11    15 e     suv  
+ 3 chevrolet    c1500 sub…   5.3  2008     8 auto… r        14    20 r     suv  
+ 4 chevrolet    c1500 sub…   6    2008     8 auto… r        12    17 r     suv  
+ 5 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        14    19 r     suv  
+ 6 chevrolet    k1500 tah…   5.3  2008     8 auto… 4        11    14 e     suv  
+ 7 dodge        durango 4…   4.7  2008     8 auto… 4        13    17 r     suv  
+ 8 dodge        durango 4…   4.7  2008     8 auto… 4         9    12 e     suv  
+ 9 dodge        durango 4…   4.7  2008     8 auto… 4        13    17 r     suv  
+10 dodge        durango 4…   5.7  2008     8 auto… 4        13    18 r     suv  
+# ℹ 13 more rows
+# ℹ 3 more variables: hwy.kpl &lt;dbl&gt;, cty.kpl &lt;dbl&gt;, drive &lt;chr&gt;</code></pre>
 </div>
-<div id="第3课-tidyverse" class="section level1">
-<h1>第3课 tidyverse</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_slide.html">Chap
-3 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_script.html">Chap
-3 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_ex.html">Chap 3
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_key.html">chap 3
-答案</a></p></li>
-</ul>
 </div>
-<div id="第4课-ggplot2" class="section level1">
-<h1>第4课 ggplot2</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_slide.html">Chap
-4 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_script.html">Chap
-4 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_ex.html">Chap 4
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_key.html">chap 4
-答案</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>ggplot2 扩展包 <a href="https://exts.ggplot2.tidyverse.org/gallery/" class="uri">https://exts.ggplot2.tidyverse.org/gallery/</a></p></li>
-<li><p>r color brewers <a href="https://r-graph-gallery.com/38-rcolorbrewers-palettes.html" class="uri">https://r-graph-gallery.com/38-rcolorbrewers-palettes.html</a></p></li>
-</ul></li>
-<li><p>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></p></li>
-</ul>
+<div id="习题2" class="section level1">
+<h1>习题2</h1>
+<p>数据集：starwars {dplyr}</p>
+<div id="section-4" class="section level3">
+<h3>2.1</h3>
+<p>2.1 starwars包含多少个缺失（NA）值？</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">data</span>(starwars)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#starwars包含105个缺失（NA）值？</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co"># is.na(starwars)返回逻辑值TRUE/FALSE, 代表有缺失/无缺失</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co"># sum()函数中，对逻辑值求和，TRUE = 1, FALSE = 0</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(starwars)) </span></code></pre></div>
+<pre><code>[1] 105</code></pre>
 </div>
-<div id="第5课-ai助力学习r之一" class="section level1">
-<h1>第5课 AI助力学习R之一</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L5_slide.html">Chap
-5 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L5_script.html">Chap
-5 代码</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ChatGPT <a href="https://chat.openai.com/" class="uri">https://chat.openai.com/</a></li>
-</ul></li>
-</ul>
+<div id="section-5" class="section level3">
+<h3>2.2</h3>
+<p>2.2 哪个变量（列）包含最多的缺失值？</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># birth_year）包含44个缺失值.</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(starwars))</span></code></pre></div>
+<pre><code>      name     height       mass hair_color skin_color  eye_color birth_year 
+         0          6         28          5          0          0         44 
+       sex     gender  homeworld    species      films   vehicles  starships 
+         4          4         10          4          0          0          0 </code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># birth_year中缺失值占比50.6%.</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">colMeans</span>(<span class="fu">is.na</span>(starwars))</span></code></pre></div>
+<pre><code>      name     height       mass hair_color skin_color  eye_color birth_year 
+0.00000000 0.06896552 0.32183908 0.05747126 0.00000000 0.00000000 0.50574713 
+       sex     gender  homeworld    species      films   vehicles  starships 
+0.04597701 0.04597701 0.11494253 0.04597701 0.00000000 0.00000000 0.00000000 </code></pre>
 </div>
-<div id="第6课-ai助力学习r之二" class="section level1">
-<h1>第6课 AI助力学习R之二</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L6_slide.html">Chap
-6 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L6_script.html">Chap
-6 代码</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>创建OpenAI账号 <a href="https://chat.openai.com/auth/login" class="uri">https://chat.openai.com/auth/login</a></p></li>
-<li><p>获取OPEN AI API KEY <a href="https://platform.openai.com/" class="uri">https://platform.openai.com/</a></p></li>
-<li><p>注册github copilot <a href="https://github.com/features/copilot" class="uri">https://github.com/features/copilot</a></p></li>
-</ul></li>
-</ul>
+<div id="section-6" class="section level3">
+<h3>2.3</h3>
+<p>2.3 哪些个体来自未知（缺失）的母星，但出生年份或体重是已知的？</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># is.na(homeworld)  is.na(homeworld)的值为TRUE时，代表homeworld是缺失的</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="co"># !is.na(mass) !代表取反，!is.na(mass)的值为TRUE时，代表mass是不缺失的</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># !is.na(birth_year) !代表取反，!is.na(birth_year)的值为TRUE时，代表birth_year是不缺失的</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(homeworld), <span class="sc">!</span><span class="fu">is.na</span>(mass) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.na</span>(birth_year))</span></code></pre></div>
+<pre><code># A tibble: 3 × 14
+  name      height  mass hair_color skin_color eye_color birth_year sex   gender
+  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+1 Yoda          66    17 white      green      brown            896 male  mascu…
+2 IG-88        200   140 none       metal      red               15 none  mascu…
+3 Qui-Gon …    193    89 brown      fair       blue              92 male  mascu…
+# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 </div>
-<div id="第7课-统计量和检验结果的表格化" class="section level1">
-<h1>第7课 统计量和检验结果的表格化</h1>
-<ul>
-<li><p>[chap 7 讲义]<to be update></p></li>
-<li><p>[Chap 7 代码]<to be update></p></li>
-<li><p>[Chap 7 习题]<to be update></p></li>
-<li><p>[chap 7 答案]<to be update></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></li>
-</ul></li>
-</ul>
+<div id="section-7" class="section level3">
+<h3>2.4</h3>
+<p>2.4 starwars中包含多少个人类？</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># starwars中人类包含35个个案.</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>)</span></code></pre></div>
+<pre><code># A tibble: 35 × 14
+   name     height  mass hair_color skin_color eye_color birth_year sex   gender
+   &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+ 1 Luke Sk…    172    77 blond      fair       blue            19   male  mascu…
+ 2 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+ 3 Leia Or…    150    49 brown      light      brown           19   fema… femin…
+ 4 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+ 5 Beru Wh…    165    75 brown      light      blue            47   fema… femin…
+ 6 Biggs D…    183    84 black      light      brown           24   male  mascu…
+ 7 Obi-Wan…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+ 8 Anakin …    188    84 blond      fair       blue            41.9 male  mascu…
+ 9 Wilhuff…    180    NA auburn, g… fair       blue            64   male  mascu…
+10 Han Solo    180    80 brown      fair       brown           29   male  mascu…
+# ℹ 25 more rows
+# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># 男性有26人，女性有9人.</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<pre><code># A tibble: 2 × 2
+# Groups:   gender [2]
+  gender        n
+  &lt;chr&gt;     &lt;int&gt;
+1 feminine      9
+2 masculine    26</code></pre>
 </div>
-<div id="第8课-组间差异比较" class="section level1">
-<h1>第8课 组间差异比较</h1>
-<ul>
-<li><p>[chap 8 讲义]<to be update></p></li>
-<li><p>[Chap 8 代码]<to be update></p></li>
-<li><p>[Chap 8 习题]<to be update></p></li>
-<li><p>[chap 8 答案]<to be update></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></li>
-</ul></li>
-</ul>
+<div id="section-8" class="section level3">
+<h3>2.5</h3>
+<p>2.5 来自哪个母星homeword的个体最多（行数）？</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># 来自Naboo的个体最多.</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>  <span class="fu">group_by</span>(homeworld) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<pre><code># A tibble: 49 × 2
+# Groups:   homeworld [49]
+   homeworld     n
+   &lt;chr&gt;     &lt;int&gt;
+ 1 Naboo        11
+ 2 Tatooine     10
+ 3 &lt;NA&gt;         10
+ 4 Alderaan      3
+ 5 Coruscant     3
+ 6 Kamino        3
+ 7 Corellia      2
+ 8 Kashyyyk      2
+ 9 Mirial        2
+10 Ryloth        2
+# ℹ 39 more rows</code></pre>
 </div>
-<div id="第9课-回归分析线性回归logistic回归" class="section level1">
-<h1>第9课 回归分析——线性回归/logistic回归</h1>
-<ul>
-<li><p>[chap 9 讲义]<to be update></p></li>
-<li><p>[Chap 9 代码]<to be update></p></li>
-<li><p>[Chap 9 习题]<to be update></p></li>
-<li><p>[chap 9 答案]<to be update></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></li>
-</ul></li>
-</ul>
+<div id="section-9" class="section level3">
+<h3>2.6</h3>
+<p>2.6
+来自个体数量最多的母性，且具有橙色眼睛的个体的平均身高是多少？</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># 208.7</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  <span class="fu">filter</span>(homeworld <span class="sc">==</span> <span class="st">&quot;Naboo&quot;</span>, eye_color <span class="sc">==</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>            <span class="at">mean_height =</span> <span class="fu">mean</span>(height))</span></code></pre></div>
+<pre><code># A tibble: 1 × 2
+      n mean_height
+  &lt;int&gt;       &lt;dbl&gt;
+1     3        209.</code></pre>
 </div>
-<div id="第10课-回归分析poisson回归cox回归" class="section level1">
-<h1>第10课 回归分析——poisson回归/Cox回归</h1>
-<ul>
-<li><p>[chap 10 讲义]<to be update></p></li>
-<li><p>[Chap 10 代码]<to be update></p></li>
-<li><p>[Chap 10 习题]<to be update></p></li>
-<li><p>[chap 10 答案]<to be update></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></li>
-</ul></li>
-</ul>
+<div id="section-10" class="section level3">
+<h3>2.7</h3>
+<p>2.7 计算所有机器人的身高的中位数、平均值和标准差。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Droid&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>            <span class="at">valid_n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)),</span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>            <span class="at">md_height =</span> <span class="fu">median</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>            <span class="at">mean_height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>            <span class="at">sd_height =</span> <span class="fu">sd</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code># A tibble: 1 × 5
+      n valid_n md_height mean_height sd_height
+  &lt;int&gt;   &lt;int&gt;     &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1     6       5        97        131.      49.1</code></pre>
 </div>
-<div id="第11课-回归分析中控制混杂" class="section level1">
-<h1>第11课 回归分析中控制混杂</h1>
-<ul>
-<li><p>[chap 11 讲义]<to be update></p></li>
-<li><p>[Chap 11 代码]<to be update></p></li>
-<li><p>[Chap 11 习题]<to be update></p></li>
-<li><p>[chap 11 答案]<to be update></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></li>
-</ul></li>
-</ul>
+<div id="section-11" class="section level3">
+<h3>2.8</h3>
+<p>2.8
+按物种species计算各个物种的平均身高和质量，并将结果保存为h_m。</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>h_m <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>            <span class="at">valid_n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(height)),</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>            <span class="at">mean_height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a>            <span class="at">not_NA_m =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(mass)),</span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>            <span class="at">md_mass =</span> <span class="fu">median</span>(mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>            )</span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a>h_m</span></code></pre></div>
+<pre><code># A tibble: 38 × 6
+   species       n valid_n mean_height not_NA_m md_mass
+   &lt;chr&gt;     &lt;int&gt;   &lt;int&gt;       &lt;dbl&gt;    &lt;int&gt;   &lt;dbl&gt;
+ 1 Aleena        1       1         79         1    15  
+ 2 Besalisk      1       1        198         1   102  
+ 3 Cerean        1       1        198         1    82  
+ 4 Chagrian      1       1        196         0    NA  
+ 5 Clawdite      1       1        168         1    55  
+ 6 Droid         6       5        131.        4    53.5
+ 7 Dug           1       1        112         1    40  
+ 8 Ewok          1       1         88         1    20  
+ 9 Geonosian     1       1        183         1    80  
+10 Gungan        3       3        209.        2    74  
+# ℹ 28 more rows</code></pre>
 </div>
-<div id="第12课-限制性立方样条rcs" class="section level1">
-<h1>第12课 限制性立方样条RCS</h1>
-<ul>
-<li><p>[chap 12 讲义]<to be update></p></li>
-<li><p>[Chap 12 代码]<to be update></p></li>
-<li><p>[Chap 12 习题]<to be update></p></li>
-<li><p>[chap 12 答案]<to be update></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></li>
-</ul></li>
-</ul>
+<div id="section-12" class="section level3">
+<h3>2.9</h3>
+<p>2.9 对h_m进行排序，列出平均身高最小的三个物种。</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>h_m <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="fu">arrange</span>(mean_height) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code># A tibble: 3 × 6
+  species            n valid_n mean_height not_NA_m md_mass
+  &lt;chr&gt;          &lt;int&gt;   &lt;int&gt;       &lt;dbl&gt;    &lt;int&gt;   &lt;dbl&gt;
+1 Yoda&#39;s species     1       1          66        1      17
+2 Aleena             1       1          79        1      15
+3 Ewok               1       1          88        1      20</code></pre>
+</div>
+<div id="section-13" class="section level3">
+<h3>2.10</h3>
+<p>2.10 对h_m进行排序，列出质量的中位数最重的三个物种。</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>h_m <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(md_mass)) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code># A tibble: 3 × 6
+  species     n valid_n mean_height not_NA_m md_mass
+  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt;       &lt;dbl&gt;    &lt;int&gt;   &lt;dbl&gt;
+1 Hutt        1       1         175        1    1358
+2 Kaleesh     1       1         216        1     159
+3 Wookiee     2       2         231        2     124</code></pre>
+</div>
+</div>
+<div id="习题3" class="section level1">
+<h1>习题3</h1>
+<p>数据集：msleep{ggplot2}</p>
+<div id="section-14" class="section level3">
+<h3>3.1</h3>
+<p>3.1 数据中最常见的vore类型是什么？有多少杂食omnivores动物？</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="fu">data</span>(msleep)</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="co"># 最常见的vore类型是herbi, 有32个个案；杂食omnivores有20个个案。</span></span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>  <span class="fu">count</span>(vore) <span class="sc">%&gt;%</span></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<pre><code># A tibble: 5 × 2
+  vore        n
+  &lt;chr&gt;   &lt;int&gt;
+1 herbi      32
+2 omni       20
+3 carni      19
+4 &lt;NA&gt;        7
+5 insecti     5</code></pre>
+</div>
+<div id="section-15" class="section level3">
+<h3>3.2</h3>
+<p>3.2
+数据集中最常见的目order是什么？是“Carnivora”目还是“Primates”目的个案更多？</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="co">#最常见的目order是Rodentia; Carnivora和Primates都有12个个案。</span></span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>  <span class="fu">count</span>(order) <span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) </span></code></pre></div>
+<pre><code># A tibble: 19 × 2
+   order               n
+   &lt;chr&gt;           &lt;int&gt;
+ 1 Rodentia           22
+ 2 Carnivora          12
+ 3 Primates           12
+ 4 Artiodactyla        6
+ 5 Soricomorpha        5
+ 6 Cetacea             3
+ 7 Hyracoidea          3
+ 8 Perissodactyla      3
+ 9 Chiroptera          2
+10 Cingulata           2
+11 Didelphimorphia     2
+12 Diprotodontia       2
+13 Erinaceomorpha      2
+14 Proboscidea         2
+15 Afrosoricida        1
+16 Lagomorpha          1
+17 Monotremata         1
+18 Pilosa              1
+19 Scandentia          1</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="co"># 或者</span></span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>  <span class="fu">group_by</span>(order) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<pre><code># A tibble: 19 × 2
+# Groups:   order [19]
+   order               n
+   &lt;chr&gt;           &lt;int&gt;
+ 1 Rodentia           22
+ 2 Carnivora          12
+ 3 Primates           12
+ 4 Artiodactyla        6
+ 5 Soricomorpha        5
+ 6 Cetacea             3
+ 7 Hyracoidea          3
+ 8 Perissodactyla      3
+ 9 Chiroptera          2
+10 Cingulata           2
+11 Didelphimorphia     2
+12 Diprotodontia       2
+13 Erinaceomorpha      2
+14 Proboscidea         2
+15 Afrosoricida        1
+16 Lagomorpha          1
+17 Monotremata         1
+18 Pilosa              1
+19 Scandentia          1</code></pre>
+</div>
+<div id="section-16" class="section level3">
+<h3>3.3</h3>
+<p>3.3 “Primates”目中哪两种哺乳动物的sleep_total时间最长和最短？</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co"># “Primates”目中Owl monkey的sleep_total时间最长, 17小时</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="co"># “Primates”目中human的sleep_total时间最短, 8小时</span></span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>  <span class="fu">filter</span>(order <span class="sc">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sleep_total))</span></code></pre></div>
+<pre><code># A tibble: 12 × 11
+   name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+ 1 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+ 2 Slow … Nyct… carni Prim… &lt;NA&gt;                11        NA        NA      13  
+ 3 Potto  Pero… omni  Prim… lc                  11        NA        NA      13  
+ 4 Patas… Eryt… omni  Prim… lc                  10.9       1.1      NA      13.1
+ 5 Macaq… Maca… omni  Prim… &lt;NA&gt;                10.1       1.2       0.75   13.9
+ 6 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  
+ 7 Galago Gala… omni  Prim… &lt;NA&gt;                 9.8       1.1       0.55   14.2
+ 8 Chimp… Pan   omni  Prim… &lt;NA&gt;                 9.7       1.4       1.42   14.3
+ 9 Squir… Saim… omni  Prim… &lt;NA&gt;                 9.6       1.4      NA      14.4
+10 Mongo… Lemur herbi Prim… vu                   9.5       0.9      NA      14.5
+11 Baboon Papio omni  Prim… &lt;NA&gt;                 9.4       1         0.667  14.6
+12 Human  Homo  omni  Prim… &lt;NA&gt;                 8         1.9       1.5    16  
+# ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+</div>
+<div id="section-17" class="section level3">
+<h3>3.4</h3>
+<p>3.4 计算一个名为 “sleep_awake_sum” 的变量，它将每种哺乳动物的
+“sleep_total” 时间和 “awake”
+时间相加。你期望和实际得到的结果是什么？</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="co">#每种哺乳动物的 &quot;sleep_total&quot; 时间和 &quot;awake&quot; 时间相加都等于24.</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a>  <span class="fu">group_by</span>(vore) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sleep_awake_sum =</span> sleep_total <span class="sc">+</span> awake) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-6"><a href="#cb48-6" tabindex="-1"></a>  <span class="fu">select</span>(vore, sleep_awake_sum)</span>
+<span id="cb48-7"><a href="#cb48-7" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" tabindex="-1"></a>mydata</span></code></pre></div>
+<pre><code># A tibble: 83 × 2
+# Groups:   vore [5]
+   vore  sleep_awake_sum
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 carni              24
+ 2 omni               24
+ 3 herbi              24
+ 4 omni               24
+ 5 herbi              24
+ 6 herbi              24
+ 7 carni              24
+ 8 &lt;NA&gt;               24
+ 9 carni              24
+10 herbi              24
+# ℹ 73 more rows</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>mydata<span class="sc">$</span>sleep_awake_sum <span class="sc">==</span> <span class="dv">24</span></span></code></pre></div>
+<pre><code> [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+[37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+<div id="section-18" class="section level3">
+<h3>3.5</h3>
+<p>3.5
+哪些动物具有最小和最大的大脑与体重比例？有多少种哺乳动物的比例大于人类？</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="co"># smallest ratio: Cow</span></span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> brainwt<span class="sc">/</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio)) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-5"><a href="#cb52-5" tabindex="-1"></a>  <span class="fu">select</span>(name, ratio) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-6"><a href="#cb52-6" tabindex="-1"></a>  <span class="fu">drop_na</span>(ratio) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-7"><a href="#cb52-7" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code># A tibble: 1 × 2
+  name     ratio
+  &lt;chr&gt;    &lt;dbl&gt;
+1 Cow   0.000705</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="co"># largest ratio: Thirteen-lined ground squirrel</span></span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> brainwt<span class="sc">/</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-5"><a href="#cb54-5" tabindex="-1"></a>  <span class="fu">select</span>(name, ratio) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-6"><a href="#cb54-6" tabindex="-1"></a>  <span class="fu">drop_na</span>(ratio) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-7"><a href="#cb54-7" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code># A tibble: 1 × 2
+  name                            ratio
+  &lt;chr&gt;                           &lt;dbl&gt;
+1 Thirteen-lined ground squirrel 0.0396</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="co"># 查看Human的ratio = 0.02129032</span></span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> brainwt<span class="sc">/</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a>  <span class="fu">select</span>(name, ratio) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-5"><a href="#cb56-5" tabindex="-1"></a>  <span class="fu">filter</span> (name <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>)</span></code></pre></div>
+<pre><code># A tibble: 1 × 2
+  name   ratio
+  &lt;chr&gt;  &lt;dbl&gt;
+1 Human 0.0213</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="co">#筛选出ratio大于人类的，有9种</span></span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb58-3"><a href="#cb58-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> brainwt<span class="sc">/</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-4"><a href="#cb58-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio)) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-5"><a href="#cb58-5" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;</span> <span class="fl">0.0212903226</span>) </span></code></pre></div>
+<pre><code># A tibble: 9 × 12
+  name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+1 Thirte… Sper… herbi Rode… lc                  13.8       3.4       0.217  10.2
+2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+3 Lesser… Cryp… omni  Sori… lc                   9.1       1.4       0.15   14.9
+4 Squirr… Saim… omni  Prim… &lt;NA&gt;                 9.6       1.4      NA      14.4
+5 Macaque Maca… omni  Prim… &lt;NA&gt;                10.1       1.2       0.75   13.9
+6 Little… Myot… inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
+7 Galago  Gala… omni  Prim… &lt;NA&gt;                 9.8       1.1       0.55   14.2
+8 Mole r… Spal… &lt;NA&gt;  Rode… &lt;NA&gt;                10.6       2.4      NA      13.4
+9 Tree s… Tupa… omni  Scan… &lt;NA&gt;                 8.9       2.6       0.233  15.1
+# ℹ 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
+</div>
+<div id="section-19" class="section level3">
+<h3>3.6</h3>
+<p>3.6
+每种食性vore的动物的最小、平均（均值）和最大睡眠周期长度是多少？</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>  <span class="fu">group_by</span>(vore) <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb60-4"><a href="#cb60-4" tabindex="-1"></a>            <span class="at">missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(sleep_cycle)), </span>
+<span id="cb60-5"><a href="#cb60-5" tabindex="-1"></a>            <span class="at">valid =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(sleep_cycle)),</span>
+<span id="cb60-6"><a href="#cb60-6" tabindex="-1"></a>            <span class="at">min_cyc =</span> <span class="fu">round</span>(<span class="fu">min</span>(sleep_cycle, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
+<span id="cb60-7"><a href="#cb60-7" tabindex="-1"></a>            <span class="at">mean_cyc =</span> <span class="fu">round</span>(<span class="fu">mean</span>(sleep_cycle, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
+<span id="cb60-8"><a href="#cb60-8" tabindex="-1"></a>            <span class="at">max_cyc =</span> <span class="fu">round</span>(<span class="fu">max</span>(sleep_cycle, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>)</span>
+<span id="cb60-9"><a href="#cb60-9" tabindex="-1"></a>            )</span></code></pre></div>
+<pre><code># A tibble: 5 × 7
+  vore        n missing valid min_cyc mean_cyc max_cyc
+  &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1 carni      19      14     5   0.333    0.373   0.417
+2 herbi      32      20    12   0.117    0.418   1    
+3 insecti     5       2     3   0.117    0.161   0.2  
+4 omni       20       9    11   0.133    0.592   1.5  
+5 &lt;NA&gt;        7       6     1   0.183    0.183   0.183</code></pre>
+</div>
 </div>
 </section>
 
