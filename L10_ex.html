@@ -14,7 +14,7 @@
 
 <meta name="date" content="2023-10-29" />
 
-<title>AI助力医学统计与R语言入门训练营（第1-12课）</title>
+<title>第10课 回归分析之二 习题</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -31,6 +31,97 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+
+a.sourceLine {
+pointer-events: auto;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -57,7 +148,7 @@ code span.ot { color: #007020; }
 
 
 <section class="page-header">
-<h1 class="title toc-ignore project-name">AI助力医学统计与R语言入门训练营（第1-12课）</h1>
+<h1 class="title toc-ignore project-name">第10课 回归分析之二 习题</h1>
 <h3 class="subtitle project-tagline">顶刊研习社</h3>
 <h4 class="author project-author">Li Zongzhang</h4>
 <h4 class="date project-date">2023-10-29</h4>
@@ -67,251 +158,66 @@ code span.ot { color: #007020; }
 <div id="TOC" class="toc">
 <div class="toc-box">
 <ul>
-<li><a href="#日程" id="toc-日程">日程</a></li>
-<li><a href="#数据" id="toc-数据">数据</a></li>
-<li><a href="#第0课-r和r-studio的下载和安装" id="toc-第0课-r和r-studio的下载和安装">第0课 R和R
-Studio的下载和安装</a></li>
-<li><a href="#第1课-r-studio入门" id="toc-第1课-r-studio入门">第1课 R
-Studio入门</a></li>
-<li><a href="#第2课-数据类型和数据结构" id="toc-第2课-数据类型和数据结构">第2课 数据类型和数据结构</a></li>
-<li><a href="#第3课-tidyverse" id="toc-第3课-tidyverse">第3课
-tidyverse</a></li>
-<li><a href="#第4课-ggplot2" id="toc-第4课-ggplot2">第4课
-ggplot2</a></li>
-<li><a href="#第5课-ai助力学习r之一" id="toc-第5课-ai助力学习r之一">第5课 AI助力学习R之一</a></li>
-<li><a href="#第6课-ai助力学习r之二" id="toc-第6课-ai助力学习r之二">第6课 AI助力学习R之二</a></li>
-<li><a href="#第7课-统计量和检验结果的表格化" id="toc-第7课-统计量和检验结果的表格化">第7课
-统计量和检验结果的表格化</a></li>
-<li><a href="#第8课-组间差异比较" id="toc-第8课-组间差异比较">第8课
-组间差异比较</a></li>
-<li><a href="#第9课-回归分析之一线性回归logistic回归" id="toc-第9课-回归分析之一线性回归logistic回归">第9课
-回归分析之一——线性回归/logistic回归</a></li>
-<li><a href="#第10课-回归分析之二poisson回归cox回归" id="toc-第10课-回归分析之二poisson回归cox回归">第10课
-回归分析之二——poisson回归/Cox回归</a></li>
-<li><a href="#第11课-回归分析中控制混杂" id="toc-第11课-回归分析中控制混杂">第11课 回归分析中控制混杂</a></li>
-<li><a href="#第12课-限制性立方样条rcs" id="toc-第12课-限制性立方样条rcs">第12课 限制性立方样条RCS</a></li>
+<li><a href="#习题1" id="toc-习题1"><span class="toc-section-number">1</span> 习题1</a></li>
+<li><a href="#习题2" id="toc-习题2"><span class="toc-section-number">2</span> 习题2</a></li>
 </ul>
 </div>
 </div>
 
 <section class="main-content">
-<style type="text/css">
-
-#TOC {
-position: fixed;
-top: 0;
-right: 0;
-height: 100%;
-width: 30%;
-overflow-y: scroll;
-padding-top: 1em;
-padding-bottom: 1em;
-}
-
-body {
-margin-right: 1%;
-}
-</style>
-<div id="日程" class="section level1">
-<h1>日程</h1>
-<ul>
-<li><a href="https://lizongzhang.github.io/rcamp/agenda.html">第1-12课</a></li>
-</ul>
+<div id="习题1" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> 习题1</h1>
+<p>数据文件：poisson_sim.csv</p>
+<p>下载链接：<a href="https://pan.baidu.com/s/13Kv8qLdUs-J0l8FRK5qCvg?pwd=1234">数据文件下载</a></p>
+<p>运行以下代码，创建数据框df</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">#导入数据文件poisson_sim.csv，该文件放置在项目所在的同一路径下</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;poisson_sim.csv&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">within</span>(df, {</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  prog <span class="ot">&lt;-</span> <span class="fu">factor</span>(prog, </span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>                 <span class="at">levels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>                 <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;General&quot;</span>, </span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>                          <span class="st">&quot;Academic&quot;</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>                          <span class="st">&quot;Vocational&quot;</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  id <span class="ot">&lt;-</span> <span class="fu">factor</span>(id)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>})</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>   id num_awards       prog math
+1  45          0 Vocational   41
+2 108          0    General   41
+3  15          0 Vocational   44
+4  67          0 Vocational   42
+5 153          0 Vocational   40
+6  51          0    General   42</code></pre>
+<p>num_awards: The number of awards earned by students at one high
+school. prog: the type of program in which the student was enrolled
+(e.g., vocational, general or academic) math: the score on their final
+exam in math.</p>
+<p>1.1 绘制df中num_awards的图像，考察其分布特征。</p>
+<p>1.2 构建关于num_awards的poisson回归模型，用表格报告其结果。</p>
+<p>1.3 绘制poisson回归中系数的图像。</p>
+<p>1.4
+计算poisson回归模型中的被解释变量对各个解释变量在样本均值点的边际效应。</p>
+<p>1.5 对1.2中的poisson回归进行诊断，检验其显著性。</p>
 </div>
-<div id="数据" class="section level1">
-<h1>数据</h1>
-<ul>
-<li><a href="https://pan.baidu.com/s/13Kv8qLdUs-J0l8FRK5qCvg?pwd=1234">数据文件下载</a></li>
-</ul>
-</div>
-<div id="第0课-r和r-studio的下载和安装" class="section level1">
-<h1>第0课 R和R Studio的下载和安装</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L0_slide.html">Chap
-0 讲义</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>下载R安装文件 <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p></li>
-<li><p>下载R Studio安装文件 <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p></li>
-<li><p>R Studio cloud <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a></p>
-<ul>
-<li>R
-Studio网页版，用google账号或者github账号注册，国内邮箱可能无法注册。</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-<div id="第1课-r-studio入门" class="section level1">
-<h1>第1课 R Studio入门</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_slide.html">Chap
-1 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_script.html">Chap
-1 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_ex.html">Chap 1
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L1_key.html">chap 1
-答案</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>按任务浏览R包 CRAN Task Views <a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a></p></li>
-<li><p>R包下载排行榜 <a href="https://www.r-pkg.org/" class="uri">https://www.r-pkg.org/</a></p></li>
-<li><p>Getting Help Online: <a href="https://rseek.org/" class="uri">https://rseek.org/</a></p></li>
-</ul></li>
-</ul>
-</div>
-<div id="第2课-数据类型和数据结构" class="section level1">
-<h1>第2课 数据类型和数据结构</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_slide.html">Chap
-2 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_script.html">Chap
-2 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_ex.html">Chap 2
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L2_key.html">chap 2
-答案</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>HTML COLOR CODES <a href="https://htmlcolorcodes.com" class="uri">https://htmlcolorcodes.com</a></p></li>
-<li><p>Colors in R <a href="https://r-charts.com/colors/" class="uri">https://r-charts.com/colors/</a></p></li>
-</ul></li>
-</ul>
-</div>
-<div id="第3课-tidyverse" class="section level1">
-<h1>第3课 tidyverse</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_slide.html">Chap
-3 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_script.html">Chap
-3 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_ex.html">Chap 3
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L3_key.html">chap 3
-答案</a></p></li>
-</ul>
-</div>
-<div id="第4课-ggplot2" class="section level1">
-<h1>第4课 ggplot2</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_slide.html">Chap
-4 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_script.html">Chap
-4 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_ex.html">Chap 4
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L4_key.html">chap 4
-答案</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>ggplot2 扩展包 <a href="https://exts.ggplot2.tidyverse.org/gallery/" class="uri">https://exts.ggplot2.tidyverse.org/gallery/</a></p></li>
-<li><p>r color brewers <a href="https://r-graph-gallery.com/38-rcolorbrewers-palettes.html" class="uri">https://r-graph-gallery.com/38-rcolorbrewers-palettes.html</a></p></li>
-</ul></li>
-<li><p>ggplot2 Aesthetic specifications <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2-specs.html</a></p></li>
-</ul>
-</div>
-<div id="第5课-ai助力学习r之一" class="section level1">
-<h1>第5课 AI助力学习R之一</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L5_slide.html">Chap
-5 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L5_script.html">Chap
-5 代码</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li>ChatGPT <a href="https://chat.openai.com/" class="uri">https://chat.openai.com/</a></li>
-</ul></li>
-</ul>
-</div>
-<div id="第6课-ai助力学习r之二" class="section level1">
-<h1>第6课 AI助力学习R之二</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L6_slide.html">Chap
-6 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L6_script.html">Chap
-6 代码</a></p></li>
-<li><p>Useful links</p>
-<ul>
-<li><p>创建OpenAI账号 <a href="https://chat.openai.com/auth/login" class="uri">https://chat.openai.com/auth/login</a></p></li>
-<li><p>获取OPEN AI API KEY <a href="https://platform.openai.com/" class="uri">https://platform.openai.com/</a></p></li>
-<li><p>注册github copilot <a href="https://github.com/features/copilot" class="uri">https://github.com/features/copilot</a></p></li>
-</ul></li>
-</ul>
-</div>
-<div id="第7课-统计量和检验结果的表格化" class="section level1">
-<h1>第7课 统计量和检验结果的表格化</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L7_slide.html">chap
-7 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L7_script.html">Chap
-7 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L7_ex.html">Chap 7
-习题</a></p></li>
-<li><p>[chap 7 答案]<to be update></p></li>
-</ul>
-</div>
-<div id="第8课-组间差异比较" class="section level1">
-<h1>第8课 组间差异比较</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L8_slide.html">chap
-8 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L8_script.html">Chap
-8 代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L8_ex.html">Chap 8
-习题</a></p></li>
-<li><p>[chap 8 答案]<to be update></p></li>
-</ul>
-</div>
-<div id="第9课-回归分析之一线性回归logistic回归" class="section level1">
-<h1>第9课 回归分析之一——线性回归/logistic回归</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L9_slide.html">chap
-9 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L9_script.html">Chap
-9 代码</a></p></li>
-<li><p><a href="(https://lizongzhang.github.io/rcamp/L9_ex.html)">Chap 9
-习题</a></p></li>
-<li><p>[chap 9 答案]<to be update></p></li>
-</ul>
-</div>
-<div id="第10课-回归分析之二poisson回归cox回归" class="section level1">
-<h1>第10课 回归分析之二——poisson回归/Cox回归</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L10_slide.html">chap
-10 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L10_script.html">Chap 10
-代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L10_ex.html">Chap 10
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L10_key.html">chap
-10 答案</a></p></li>
-</ul>
-</div>
-<div id="第11课-回归分析中控制混杂" class="section level1">
-<h1>第11课 回归分析中控制混杂</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L11_slide.html">chap
-11 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L11_script.html">Chap 11
-代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L11_ex.html">Chap 11
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L11_key.html">chap
-11 答案</a></p></li>
-</ul>
-</div>
-<div id="第12课-限制性立方样条rcs" class="section level1">
-<h1>第12课 限制性立方样条RCS</h1>
-<ul>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L12_slide.html">chap
-12 讲义</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L12_script.html">Chap 12
-代码</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L12_ex.html">Chap 12
-习题</a></p></li>
-<li><p><a href="https://lizongzhang.github.io/rcamp/L12_key.html">chap
-12 答案</a></p></li>
-</ul>
+<div id="习题2" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 习题2</h1>
+<p>数据文件：{epiDisplay} Marryage数据集</p>
+<p>2.1 查看Marryage数据集的帮助说明。</p>
+<p>2.2 用codebook()查看Marryage数据集中变量编码的含义。</p>
+<p>2.3
+计算Marryage数据集中个案的年龄，以及结婚时的年龄，并将这两个变量追加到Marryage数据集中，命名为age和age_marry。</p>
+<p>2.2 用Table1的形式报Marryage数据集中变量的描述统计量。</p>
+<p>2.3
+利用lung数据集构建一个logistic回归，解读logistic回归的估计结果。</p>
+<p>2.4 利用lung数据集构建一个Cox回归，解读Cox回归的估计结果。</p>
+<p>2.5 绘制基线生存函数曲线。</p>
+<p>2.6 计算1年期生存概率。</p>
+<p>2.7 计算中位数生存时长。</p>
+<p>2.8 按性别分组绘制生存曲线。</p>
+<p>2.9 按年龄段分组绘制生存曲线。</p>
 </div>
 </section>
 
